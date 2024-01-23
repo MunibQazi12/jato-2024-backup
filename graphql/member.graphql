@@ -1,0 +1,12 @@
+query member(
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+) {
+  member(
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    _publishedAt
+    iframeUrl
+  }
+}

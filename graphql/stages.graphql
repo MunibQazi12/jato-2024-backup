@@ -1,0 +1,42 @@
+query Stages(
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+  $skip: IntType = "0"
+) {
+  allStages(
+    filter: { name: { isBlank: "false" } }
+    orderBy: _createdAt_DESC
+    first: "9"
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+    skip: $skip
+  ) {
+    _publishedAt
+    slug
+    id
+    name
+    streamKey
+    iframeUrl
+    seoTags {
+      description
+      image {
+        responsiveImage {
+          srcSet
+          webpSrcSet
+          sizes
+          src
+          width
+          height
+          aspectRatio
+          alt
+          title
+          bgColor
+          base64
+        }
+      }
+    }
+  }
+  _allStagesMeta(locale: $locale, filter: { name: { isBlank: "false" } }) {
+    count
+  }
+}

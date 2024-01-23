@@ -1,0 +1,12 @@
+query socialFeed(
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+) {
+  socialFeed(
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    _publishedAt
+    iframe
+  }
+}

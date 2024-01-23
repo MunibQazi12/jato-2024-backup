@@ -1,0 +1,196 @@
+query SpeakerPage($locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+  page(
+    filter: { label: { eq: "Speakers" } }
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    sections {
+      ... on SpeakersIntroRecord {
+        id
+        _modelApiKey
+        preHeader
+        header
+        subheader
+        introductionText {
+          value
+        }
+      }
+      ... on StatsSectionRecord {
+        _modelApiKey
+        id
+        title
+        subtitle
+        statistic {
+          id
+          label
+          quantity
+          icon {
+            url
+          }
+        }
+      }
+      ... on SpeakerSectionRecord {
+        _modelApiKey
+        id
+        displayOptions
+        title
+        subtitle
+        showcasedSpeakers {
+          name
+          id
+          slug
+          biography {
+            value
+            links {
+              _publishedAt
+              slug
+              id
+              title
+              start
+              end
+              dateTags {
+                id
+                eventDate
+                slug
+              }
+              stage {
+                id
+                name
+                slug
+              }
+              seoTags {
+                description
+                image {
+                  responsiveImage {
+                    srcSet
+                    webpSrcSet
+                    sizes
+                    src
+                    width
+                    height
+                    aspectRatio
+                    alt
+                    title
+                    bgColor
+                    base64
+                  }
+                }
+              }
+              speaker {
+                name
+                jobTitle
+                id
+                slug
+                picture {
+                  responsiveImage(
+                    imgixParams: { w: "64", h: "64", fit: crop }
+                  ) {
+                    srcSet
+                    webpSrcSet
+                    sizes
+                    src
+                    width
+                    height
+                    aspectRatio
+                    alt
+                    title
+                    bgColor
+                    base64
+                  }
+                }
+              }
+            }
+            blocks {
+              ... on ImageBlockRecord {
+                id
+                __typename
+                image {
+                  id
+                  responsiveImage {
+                    srcSet
+                    webpSrcSet
+                    sizes
+                    src
+                    width
+                    height
+                    aspectRatio
+                    alt
+                    title
+                    base64
+                  }
+                }
+              }
+              ... on AppCtaRecord {
+                id
+                __typename
+                text
+                title
+                googlePlayUrl
+                appstoreUrl
+              }
+              ... on NewsletterSubscriptionRecord {
+                id
+                __typename
+                buttonLabel
+                subtitle
+                title
+              }
+              ... on CtaButtonWithImageRecord {
+                id
+                __typename
+                title
+                subtitle
+                image {
+                  id
+                  responsiveImage {
+                    srcSet
+                    webpSrcSet
+                    sizes
+                    src
+                    width
+                    height
+                    aspectRatio
+                    alt
+                    title
+                    base64
+                  }
+                }
+                buttonLabel
+              }
+            }
+          }
+          jobTitle
+          picture {
+            responsiveImage {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              height
+              aspectRatio
+              alt
+              title
+              bgColor
+              base64
+            }
+          }
+        }
+      }
+      ... on FaqSectionRecord {
+        _modelApiKey
+        displayOptions
+        id
+        title
+        subtitle
+        questions {
+          question
+          id
+          answer {
+            value
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+query CategoryAward(
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+  $skip: IntType = "0"
+) {
+  allCategoryAwards(
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+    first: "9"
+    skip: $skip
+  ) {
+    _publishedAt
+    title
+    id
+    category {
+      name
+      slug
+      bio
+      picture {
+        responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+          srcSet
+          webpSrcSet
+          sizes
+          src
+          width
+          height
+          aspectRatio
+          alt
+          title
+          bgColor
+          base64
+        }
+      }
+    }
+    award {
+      _publishedAt
+      slug
+      id
+      title
+      jobTitle
+      atags {
+        atag
+      }
+      seoTags {
+        description
+        image {
+          responsiveImage {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            bgColor
+            base64
+          }
+        }
+      }
+      acategory {
+        name
+        slug
+        bio
+        picture {
+          responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            bgColor
+            base64
+          }
+        }
+      }
+    }
+  }
+  _allCategoryAwardsMeta(locale: $locale) {
+    count
+  }
+}

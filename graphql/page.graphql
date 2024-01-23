@@ -1,0 +1,492 @@
+query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
+  page(
+    filter: { slug: { eq: $slug } }
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    sections {
+      ... on SpacerRecord {
+        id
+        _modelApiKey
+        space
+        extraMargin
+      }
+      ... on AboutIntroRecord {
+        id
+        _modelApiKey
+        preHeader
+        header
+        subheader
+        introductionText {
+          value
+        }
+        images {
+          id
+          responsiveImage {
+            ...DatoImage_responsiveImage
+            webpSrcSet
+          }
+        }
+      }
+      ... on SpeakersIntroRecord {
+        id
+        _modelApiKey
+        preHeader
+        header
+        subheader
+        introductionText {
+          value
+        }
+      }
+      ... on ChangelogSectionRecord {
+        id
+        _modelApiKey
+        subtitle
+        title
+        featuredVersions {
+          timeOfRelease
+          versionName
+          slug
+          id
+          _modelApiKey
+        }
+      }
+      ... on StatsSectionRecord {
+        _modelApiKey
+        id
+        title
+        subtitle
+        statistic {
+          id
+          label
+          quantity
+          icon {
+            url
+          }
+        }
+      }
+      ... on TeamSectionRecord {
+        _modelApiKey
+        id
+        displayOptions
+        title
+        subtitle
+        showcasedMembers {
+          name
+          id
+          slug
+          bio
+          description
+          picture {
+            responsiveImage {
+              ...DatoImage_responsiveImage
+              webpSrcSet
+            }
+          }
+        }
+      }
+      ... on SpeakerSectionRecord {
+        _modelApiKey
+        id
+        displayOptions
+        title
+        subtitle
+        showcasedSpeakers {
+          name
+          id
+          slug
+          biography {
+            value
+            links {
+              _publishedAt
+              slug
+              id
+              title
+              start
+              end
+              dateTags {
+                id
+                eventDate
+                slug
+              }
+              stage {
+                id
+                name
+                slug
+              }
+              seoTags {
+                description
+                image {
+                  responsiveImage {
+                    srcSet
+                    webpSrcSet
+                    sizes
+                    src
+                    width
+                    height
+                    aspectRatio
+                    alt
+                    title
+                    bgColor
+                    base64
+                  }
+                }
+              }
+              speaker {
+                name
+                jobTitle
+                id
+                slug
+                picture {
+                  responsiveImage(
+                    imgixParams: { w: "64", h: "64", fit: crop }
+                  ) {
+                    srcSet
+                    webpSrcSet
+                    sizes
+                    src
+                    width
+                    height
+                    aspectRatio
+                    alt
+                    title
+                    bgColor
+                    base64
+                  }
+                }
+              }
+            }
+            blocks {
+              ... on ImageBlockRecord {
+                id
+                __typename
+                image {
+                  id
+                  responsiveImage {
+                    srcSet
+                    webpSrcSet
+                    sizes
+                    src
+                    width
+                    height
+                    aspectRatio
+                    alt
+                    title
+                    base64
+                  }
+                }
+              }
+              ... on AppCtaRecord {
+                id
+                __typename
+                text
+                title
+                googlePlayUrl
+                appstoreUrl
+              }
+              ... on NewsletterSubscriptionRecord {
+                id
+                __typename
+                buttonLabel
+                subtitle
+                title
+              }
+              ... on CtaButtonWithImageRecord {
+                id
+                __typename
+                title
+                subtitle
+                image {
+                  id
+                  responsiveImage {
+                    srcSet
+                    webpSrcSet
+                    sizes
+                    src
+                    width
+                    height
+                    aspectRatio
+                    alt
+                    title
+                    base64
+                  }
+                }
+                buttonLabel
+              }
+            }
+          }
+          jobTitle
+          picture {
+            responsiveImage {
+              ...DatoImage_responsiveImage
+              webpSrcSet
+            }
+          }
+        }
+      }
+      ... on FaqSectionRecord {
+        _modelApiKey
+        displayOptions
+        id
+        title
+        subtitle
+        questions {
+          question
+          id
+          answer {
+            value
+          }
+        }
+      }
+      ... on HeroSectionRecord {
+        buttons {
+          id
+          label
+          primary
+          url
+        }
+        _modelApiKey
+        id
+        heroSubtitle
+        heroTitle
+        displayOptions
+        heroImage {
+          responsiveImage {
+            ...DatoImage_responsiveImage
+            webpSrcSet
+          }
+        }
+      }
+      ... on VideoSectionRecord {
+        _modelApiKey
+        id
+        videoHeader
+        videoSubheader
+        video {
+          providerUid
+          provider
+          thumbnailUrl
+        }
+        videoThumbnail {
+          responsiveImage {
+            ...DatoImage_responsiveImage
+            webpSrcSet
+          }
+        }
+      }
+      ... on DetailSectionRecord {
+        _modelApiKey
+        id
+        details {
+          value
+        }
+        imagePosition
+        image {
+          responsiveImage {
+            ...DatoImage_responsiveImage
+            webpSrcSet
+          }
+        }
+      }
+      ... on ReviewSectionRecord {
+        _modelApiKey
+        id
+        reviewSectionHeader
+        reviewSectionSubheader
+        displayOptions
+        reviews {
+          id
+          rating
+          review {
+            value
+            links
+            blocks
+          }
+          reviewerName
+          reviewerPicture {
+            responsiveImage {
+              ...DatoImage_responsiveImage
+              webpSrcSet
+            }
+          }
+          reviewerTitle
+        }
+      }
+      ... on PricingSectionRecord {
+        _modelApiKey
+        id
+        pricingSectionHeader
+        pricingSectionSubheader
+        displayOption
+        plans {
+          id
+          yearlyPrice
+          monthlyPrice
+          tierName
+          tierDescription {
+            value
+          }
+          slug
+          planFeatures
+        }
+      }
+      ... on BrandSectionRecord {
+        _modelApiKey
+        id
+        displayOptions
+        brand {
+          _modelApiKey
+          brandName
+          brandUrl
+          id
+          brandLogo {
+            url
+          }
+        }
+      }
+      ... on FeaturedPostsSectionRecord {
+        _modelApiKey
+        id
+        featuredPostsHeader
+        featuredPostsSubheader
+        displayOptions
+        featuredPosts {
+          _publishedAt
+          slug
+          id
+          title
+          tags {
+            tag
+          }
+          seoTags {
+            description
+            image {
+              responsiveImage {
+                ...DatoImage_responsiveImage
+                webpSrcSet
+              }
+            }
+          }
+          author {
+            name
+            bio
+            slug
+            picture {
+              responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+                ...DatoImage_responsiveImage
+                webpSrcSet
+              }
+            }
+          }
+        }
+      }
+      ... on FeaturedAcategorySectionRecord {
+        _modelApiKey
+        id
+        featuredAcategoryHeader
+        featuredAcategorySubheader
+        displayOption
+        featuredAcategory {
+          name
+          slug
+          description
+          picture {
+            responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+              ...DatoImage_responsiveImage
+              webpSrcSet
+            }
+          }
+        }
+      }
+      ... on IvsLiveStageRecord {
+        _modelApiKey
+        id
+        title
+        rtmpUrl
+        iframeUrl
+        iframeHeight
+        iframeWidth
+        iframeMinHeight
+      }
+      ... on IframeBlockRecord {
+        _modelApiKey
+        id
+        iframeUrl
+        height
+        width
+        minHeight
+        minHeightDimensionUnit
+        widthDimensionUnit
+        heightDimensionUnit
+      }
+      ... on BannerBlockRecord {
+        _modelApiKey
+        id
+        objectFit
+        layout
+        height
+        width
+        minHeight
+        minHeightDimensionUnit
+        widthDimensionUnit
+        heightDimensionUnit
+        bannerUrl
+        bannerImage {
+          responsiveImage {
+            ...DatoImage_responsiveImage
+            webpSrcSet
+          }
+        }
+      }
+      ... on MuxLiveStreamRecord {
+        _modelApiKey
+        id
+        title
+        playbackId
+        placeholderUrl
+        streamType
+        iframeUrl
+        iframeHeight
+        iframeWidth
+        iframeMinHeight
+      }
+      ... on FeatureListSectionRecord {
+        _modelApiKey
+        id
+        featuresHeader
+        featuresSubheader
+        displayOption
+        feature {
+          _modelApiKey
+          id
+          link
+          featureTitle
+          featureDescription
+          featureIcon {
+            responsiveImage {
+              ...DatoImage_responsiveImage
+              webpSrcSet
+            }
+          }
+        }
+      }
+      ... on RedirectSectionRecord {
+        id
+        _modelApiKey
+        slugToRedirectTo
+      }
+    }
+    id
+    label
+    _modelApiKey
+  }
+}
+fragment DatoImage_responsiveImage on ResponsiveImage {
+  src
+  srcSet
+  base64
+  width
+  height
+  alt
+  title
+}

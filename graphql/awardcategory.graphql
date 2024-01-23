@@ -1,0 +1,88 @@
+query AwardCategory(
+  $slug: String
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+  $skip: IntType = "0"
+) {
+  acategory(filter: { slug: { eq: $slug } }, locale: $locale) {
+    name
+    picture {
+      responsiveImage {
+        srcSet
+        webpSrcSet
+        sizes
+        src
+        width
+        height
+        aspectRatio
+        alt
+        title
+        bgColor
+        base64
+      }
+    }
+    bio
+    description
+    _allReferencingAwards(
+      filter: { title: { isBlank: "false" } }
+      orderBy: _createdAt_DESC
+      first: "100"
+      locale: $locale
+      fallbackLocales: $fallbackLocale
+      skip: $skip
+    ) {
+      _publishedAt
+      slug
+      id
+      title
+      jobTitle
+      atags {
+        atag
+      }
+      seoTags {
+        description
+        image {
+          responsiveImage {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            bgColor
+            base64
+          }
+        }
+      }
+      acategory {
+        name
+        bio
+        slug
+        picture {
+          responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            bgColor
+            base64
+          }
+        }
+      }
+    }
+    _allReferencingAwardsMeta(
+      locale: $locale
+      filter: { title: { isBlank: "false" } }
+    ) {
+      count
+    }
+  }
+}

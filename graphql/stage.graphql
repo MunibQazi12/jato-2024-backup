@@ -1,0 +1,405 @@
+query Stage(
+  $slug: String
+  $locale: SiteLocale
+  $fallbackLocale: [SiteLocale!]
+) {
+  stage(
+    filter: { slug: { eq: $slug }, name: { isBlank: "false" } }
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    _publishedAt
+    name
+    streamKey
+    iframeUrl
+    talk {
+      _publishedAt
+      slug
+      id
+      title
+      start
+      end
+      content {
+        value
+        links {
+          _publishedAt
+          __typename
+          slug
+          id
+          title
+          dateTags {
+            eventDate
+          }
+          seoTags {
+            description
+            image {
+              responsiveImage {
+                srcSet
+                webpSrcSet
+                sizes
+                src
+                width
+                height
+                aspectRatio
+                alt
+                title
+                bgColor
+                base64
+              }
+            }
+          }
+          speaker {
+            name
+            biography {
+              value
+              links {
+                _publishedAt
+                slug
+                id
+                title
+                start
+                end
+                dateTags {
+                  id
+                  eventDate
+                  slug
+                }
+                stage {
+                  id
+                  name
+                  slug
+                }
+                seoTags {
+                  description
+                  image {
+                    responsiveImage {
+                      srcSet
+                      webpSrcSet
+                      sizes
+                      src
+                      width
+                      height
+                      aspectRatio
+                      alt
+                      title
+                      bgColor
+                      base64
+                    }
+                  }
+                }
+                speaker {
+                  name
+                  jobTitle
+                  id
+                  slug
+                  picture {
+                    responsiveImage(
+                      imgixParams: { w: "64", h: "64", fit: crop }
+                    ) {
+                      srcSet
+                      webpSrcSet
+                      sizes
+                      src
+                      width
+                      height
+                      aspectRatio
+                      alt
+                      title
+                      bgColor
+                      base64
+                    }
+                  }
+                }
+              }
+              blocks {
+                ... on ImageBlockRecord {
+                  id
+                  __typename
+                  image {
+                    id
+                    responsiveImage {
+                      srcSet
+                      webpSrcSet
+                      sizes
+                      src
+                      width
+                      height
+                      aspectRatio
+                      alt
+                      title
+                      base64
+                    }
+                  }
+                }
+                ... on AppCtaRecord {
+                  id
+                  __typename
+                  text
+                  title
+                  googlePlayUrl
+                  appstoreUrl
+                }
+                ... on NewsletterSubscriptionRecord {
+                  id
+                  __typename
+                  buttonLabel
+                  subtitle
+                  title
+                }
+                ... on CtaButtonWithImageRecord {
+                  id
+                  __typename
+                  title
+                  subtitle
+                  image {
+                    id
+                    responsiveImage {
+                      srcSet
+                      webpSrcSet
+                      sizes
+                      src
+                      width
+                      height
+                      aspectRatio
+                      alt
+                      title
+                      base64
+                    }
+                  }
+                  buttonLabel
+                }
+              }
+            }
+            jobTitle
+            id
+            slug
+            picture {
+              responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+                srcSet
+                webpSrcSet
+                sizes
+                src
+                width
+                height
+                aspectRatio
+                alt
+                title
+                bgColor
+                base64
+              }
+            }
+          }
+        }
+        blocks {
+          ... on ImageBlockRecord {
+            id
+            __typename
+            image {
+              id
+              responsiveImage {
+                srcSet
+                webpSrcSet
+                sizes
+                src
+                width
+                height
+                aspectRatio
+                alt
+                title
+                base64
+              }
+            }
+          }
+          ... on AppCtaRecord {
+            id
+            __typename
+            text
+            title
+            googlePlayUrl
+            appstoreUrl
+          }
+          ... on NewsletterSubscriptionRecord {
+            id
+            __typename
+            buttonLabel
+            subtitle
+            title
+          }
+          ... on CtaButtonWithImageRecord {
+            id
+            __typename
+            title
+            subtitle
+            image {
+              id
+              responsiveImage {
+                srcSet
+                webpSrcSet
+                sizes
+                src
+                width
+                height
+                aspectRatio
+                alt
+                title
+                base64
+              }
+            }
+            buttonLabel
+          }
+        }
+      }
+      stage {
+        id
+        name
+        slug
+      }
+      dateTags {
+        id
+        eventDate
+        slug
+      }
+      speaker {
+        name
+        jobTitle
+        biography {
+          value
+          links {
+            _publishedAt
+            slug
+            id
+            title
+            start
+            end
+            dateTags {
+              id
+              eventDate
+              slug
+            }
+            stage {
+              id
+              name
+              slug
+            }
+            seoTags {
+              description
+              image {
+                responsiveImage {
+                  srcSet
+                  webpSrcSet
+                  sizes
+                  src
+                  width
+                  height
+                  aspectRatio
+                  alt
+                  title
+                  bgColor
+                  base64
+                }
+              }
+            }
+            speaker {
+              name
+              jobTitle
+              id
+              slug
+              picture {
+                responsiveImage(imgixParams: { w: "64", h: "64", fit: crop }) {
+                  srcSet
+                  webpSrcSet
+                  sizes
+                  src
+                  width
+                  height
+                  aspectRatio
+                  alt
+                  title
+                  bgColor
+                  base64
+                }
+              }
+            }
+          }
+          blocks {
+            ... on ImageBlockRecord {
+              id
+              __typename
+              image {
+                id
+                responsiveImage {
+                  srcSet
+                  webpSrcSet
+                  sizes
+                  src
+                  width
+                  height
+                  aspectRatio
+                  alt
+                  title
+                  base64
+                }
+              }
+            }
+            ... on AppCtaRecord {
+              id
+              __typename
+              text
+              title
+              googlePlayUrl
+              appstoreUrl
+            }
+            ... on NewsletterSubscriptionRecord {
+              id
+              __typename
+              buttonLabel
+              subtitle
+              title
+            }
+            ... on CtaButtonWithImageRecord {
+              id
+              __typename
+              title
+              subtitle
+              image {
+                id
+                responsiveImage {
+                  srcSet
+                  webpSrcSet
+                  sizes
+                  src
+                  width
+                  height
+                  aspectRatio
+                  alt
+                  title
+                  base64
+                }
+              }
+              buttonLabel
+            }
+          }
+        }
+        id
+        slug
+        picture {
+          responsiveImage(
+            imgixParams: { w: "64", h: "64", fit: crop, auto: format }
+          ) {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            bgColor
+            base64
+          }
+        }
+      }
+    }
+  }
+}

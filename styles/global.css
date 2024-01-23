@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/static/Inter-Thin.ttf');
+  font-weight: 100;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/static/Inter-ExtraLight.ttf');
+  font-weight: 200;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/static/Inter-Light.ttf');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/static/Inter-Regular.ttf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/static/Inter-Medium.ttf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/static/Inter-SemiBold.ttf');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/static/Inter-Bold.ttf');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/static/Inter-ExtraBold.ttf');
+  font-weight: 800;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/static/Inter-Black.ttf');
+  font-weight: 900;
+}
+
+@layer base {
+  :root {
+    --color-primary: #C82026;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  input[type='checkbox']:checked~label span svg {
+    @apply inline-flex;
+  }
+
+  .sticky .header-logo {
+    @apply py-5 lg:py-2;
+  }
+
+  .sticky .menu-scroll.active {
+    @apply opacity-70;
+  }
+
+  input#togglePlan:checked~.dot {
+    @apply translate-x-full;
+  }
+
+  input#checkboxLabel:checked~.box span {
+    @apply opacity-100;
+  }
+}
+
+
+.mainSwiper .swiper-button-next,
+.swiper-button-prev {
+  right: 10px;
+  padding: 30px;
+  color: #959cb1 !important;
+  fill: #959cb1 !important;
+  fill: #959cb1 !important;
+}
+
+
+.mainSwiper .swiper {
+  width: 100%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mainSwiper .swiper-slide {
+  background-size: cover;
+  background-position: center;
+}
+
+.thumbnailSwiper {
+  height: 20%;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.thumbnailSwiper .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.thumbnailSwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.thumbnailSwiper .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-free-mode>.swiper-wrapper {
+  justify-content: center;
+}
+
+.thumbnailSwiper .swiper-slide {
+  border-radius: 5px;
+  margin: 5px;
+  overflow: hidden;
+  width: 60px !important;
+  height: 60px;
+}
+
+@media (max-width: 1200px) {
+
+  .mainSwiper .swiper-button-next,
+  .swiper-button-prev {
+    padding: 15px;
+  }
+}
